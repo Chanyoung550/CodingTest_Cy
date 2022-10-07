@@ -1,4 +1,4 @@
-package BFS;
+package BFSDFS;
 
 
 //		Leo는 카펫을 사러 갔다가 아래 그림과 같이 중앙에는 노란색으로 칠해져 있고 테두리 1줄은 갈색으로 칠해져 있는 격자 모양 카펫을 봤습니다.
@@ -22,15 +22,31 @@ public class Carpet {
 	public static void main(String[] args) {
 		
 		Solution3 sl = new Solution3();
-		sl.solution(0, 0);
+		sl.solution(10, 2);
 		
 	}
 }
 
 class Solution3 {
-    public int[] solution(int brown, int yellow) {
-    	
-        int[] answer = {};
+	public int[] solution(int brown, int yellow) {
+        int[] answer = new int[2];
+        int sum = brown + yellow;
+        
+        for (int i = 3; i < sum; i++) {
+            int j = sum / i;
+            
+            if (sum % i == 0 && j >= 3) {
+                int col = Math.max(i, j);
+                int row = Math.min(i, j);
+                int center = (col - 2) * (row - 2);
+                
+                if (center == yellow) {
+                    answer[0] = col;
+                    answer[1] = row;
+                    return answer;
+                }
+            }
+        }
         return answer;
     }
 }

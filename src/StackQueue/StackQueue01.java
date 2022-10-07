@@ -30,7 +30,6 @@ public class StackQueue01 {
 		System.out.println(b);
 		
 	}
-
 }
 
 class Solution2 {
